@@ -1,0 +1,27 @@
+.about_bg {
+     background-image: url('../../assets/about/about-hero.jpg');
+     width: 100%;
+     min-height: 650px;
+     background-repeat: no-repeat;
+     background-position: 100%;
+     -webkit-background-clip: 100%;
+     background-origin: center;
+     background-clip: center;
+     background-attachment: scroll;
+}
+
+.about_bg-1 {
+     background-image: url('../../assets/about/about-2.jpg');
+     width: 100%;
+     min-height: 650px;
+     background-repeat: no-repeat;
+     background-position: 100%;
+     -webkit-background-clip: 100%;
+     background-origin: center;
+     background-clip: center;
+     background-attachment: scroll;
+}
+
+.be_bold {
+     text-shadow: 3px 3px 0px #fff, 4px 4px 0px #e97722;
+}

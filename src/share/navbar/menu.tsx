@@ -37,12 +37,12 @@ const Menu = () => {
 
                     </div>
                     <div>
-                         <Link href={'/'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
+                         <Link href={'/store-locator'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
                               WHERE TO BUY
                          </Link>
                     </div>
                     <div>
-                         <Link href={'/'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">CONTACT
+                         <Link href={'/contact'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">CONTACT
                          </Link>
                     </div>
                     <div>
