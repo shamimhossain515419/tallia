@@ -8,13 +8,13 @@ const Menu = () => {
           <div className=' pt-3  bg-white  px-6 '>
                <div className="  flex items-start py-3    flex-col  gap-4">
                     <div>
-                         <Link href={'/'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
+                         <Link href={'/about-us'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
                               ABOUT US
                          </Link>
 
                     </div>
                     <div>
-                         <Link href={'/'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase " >
+                         <Link href={'/shop'} className="  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase " >
                               SHOP
                          </Link>
                     </div>

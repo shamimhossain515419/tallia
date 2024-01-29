@@ -23,7 +23,7 @@ const Footer = () => {
                     {/* footer menu  */}
                     <div className="     flex  justify-center lg:justify-between items-center gap-2  ">
                          <Link href={'/'}>
-                              <h1 className="text-4xl text-center  md:text-start text-[#000000] duration-100 cursor-pointer  uppercase   tracking-wide font-normal">ONEDROB</h1>
+                              <h1 className="text-4xl text-center  md:text-start text-[#000000] duration-100 cursor-pointer  uppercase   tracking-wide font-normal">Tallia</h1>
                          </Link>
                          <div className="  hidden lg:flex items-center  md:gap-6 xl:gap-12">
                               <div>

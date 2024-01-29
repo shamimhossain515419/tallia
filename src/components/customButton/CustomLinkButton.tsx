@@ -4,10 +4,9 @@ import React from 'react';
 
 const CustomLinkButton = ({ title, path }: LinkButton) => {
      return (
-          <Link href={path} className='text-whit inline-flex overflow-hidden items-center justify-start   transition-all relative group  px-4 py-2 text-[16px] font-normal rounded-[40px]  bg-transparent  hover:border-[#F15A24] duration-500 border border-[#fff]'>
-               <span className="w-full  h-full rounded  bg-[#F15A24] absolute bottom-0 left-0 right-0 -translate-x-full ease-out duration-500 transition-all translate-y-full group-hover:ml-0 group-hover:mb-10 group-hover:translate-x-0"></span>
-               <span className="relative uppercase w-full text-center transition-colors duration-300 ease-in-out text-white">{title}</span>
-
+          <Link href={path} className=" text-[15px] w-full  px-6 py-2 bg-transparent   my-3 flex items-center justify-center rounded-[40px] cursor-pointer relative overflow-hidden transition-all  border border-white  hover:border-[#F15A24]  duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-[#F15A24]
+          before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-[40px]  hover:before:left-0 uppercase  text-white">
+               {title}
           </Link>
      );
 };
