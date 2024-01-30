@@ -12,8 +12,8 @@ const Navbar = () => {
      const [active, setActive] = useState(false)
      return (
           <div className=" relative">
-               <div className="  fixed    top-0 w-full left-0 right-0 bg-[#ffffffbc] z-50      py-5">
-                    <div className="  px-6    flex justify-between items-center gap-2  ">
+               <div className="  fixed    top-0 w-full left-0 right-0 bg-[#ffffffbc] z-50      ">
+                    <div className="  px-6   py-5 flex justify-between items-center gap-2  ">
                          <Link href={'/'}>
                               <h1 className="text-5xl  hover:text-[#000000] duration-100 cursor-pointer text-secondary uppercase   tracking-wide font-normal">tallia</h1>
                          </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
                               </div>
                               <div className=" group ">
                                    <div>
-                                        <Link href={'/collections'} className="  flex items-center gap-2 text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
+                                        <Link href={'/collections/fall-winter-2023'} className="  flex items-center gap-2 text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
                                              <span> COLLECTIONS</span>
                                              <MdKeyboardArrowDown size={20} />
                                              <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
@@ -61,7 +61,7 @@ const Navbar = () => {
                                    </Link>
                               </div>
                               <div>
-                                   <Link href={'/'} className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
+                                   <Link target="_blank" href={'https://www.instagram.com/talliaclothing/'} className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
                                         <span>FOLLOW US</span>
                                         <FaInstagram size={20}></FaInstagram>
                                         <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>

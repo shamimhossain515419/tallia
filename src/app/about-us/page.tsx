@@ -1,9 +1,37 @@
-
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import "./index.css"
 import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
-const page = () => {
+const Page = () => {
+
+     const [scrollPosition, setScrollPosition] = useState(0);
+     const [beBold, setBeBold] = useState("");
+     console.log(scrollPosition);
+     console.log(beBold);
+
+     useEffect(() => {
+          const handleScroll = () => {
+               const currentPosition = window.scrollY;
+
+               // Set the scroll position state
+               setScrollPosition(currentPosition);
+
+               // Define the threshold scroll position to change the style
+               const threshold = 1956;
+
+               // Update the navbar style based on the scroll position
+               if (currentPosition > threshold) {
+                    setBeBold("sm:text-[80px] md:text-[100px] lg:text-[130px] xl:text-[150px] 2xl:text-[190px]");
+               } else {
+                    setBeBold("sm:text-[100px] md:text-[120px] lg:text-[140px] xl:text-[190px] 2xl:text-[240px] ");
+               }
+          };
+          window.addEventListener("scroll", handleScroll);
+     })
+
+     // Add the scroll event listener
+
      return (
           <div className=' pt-5 w-full'>
                <div>
@@ -45,7 +73,7 @@ const page = () => {
                          {/* be Bold  section */}
 
                          <div className='absolute transform  left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
-                              <h1 className='text-[60px] uppercase sm:text-[80px] md:text-[100px] lg:text-[130px] xl:text-[150px] 2xl:text-[190px] font-extrabold text-center be_bold text-primary'>
+                              <h1 className={`text-[60px] ${beBold} uppercase duration-500  ease-in-out font-extrabold text-center be_bold text-primary`}>
                                    be Bold  </h1>
                          </div>
 
@@ -69,4 +97,4 @@ const page = () => {
      );
 };
 
-export default page;
+export default Page;

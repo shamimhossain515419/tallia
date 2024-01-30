@@ -9,7 +9,6 @@ const page = () => {
           <div>
                <CollectionsTitle title="Spring/Summer2023" />
                <CollectionsVideo video="https://tallia.com/wp-content/uploads/2023/03/Tallia-SP23-Final.mp4"></CollectionsVideo>
-
                <div className=" max-w-[970px] mx-auto py-16">
                     <div className=" grid  lg:grid-cols-2  grid-cols-1    gap-3">
                          {
