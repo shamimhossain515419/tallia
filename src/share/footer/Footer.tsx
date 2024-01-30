@@ -74,7 +74,7 @@ const Footer = () => {
                     </div>
 
                     <div className=' pt-8'> 
-                         <p className='text-[#585656] text-[15px]'>© Copyright | Tallia | All Rights Reserved</p>
+                         <p className='text-[#585656] text-center md:text-start text-[15px]'>© Copyright | Tallia | All Rights Reserved</p>
                     </div>
 
                </div>

@@ -5,14 +5,14 @@ import React from 'react';
 
 const page = () => {
      return (
-          <div className=' py-10'>
+          <div className=' py-10  px-1'>
                <div className=' max-w-[800px] mx-auto'>
-                    <h1 className='text-[40px] font-bold md:text-[80px] text-center '>STORE LOCATOR</h1>
+                    <h1 className=' text-[30px] lg:text-[40px] font-bold md:text-[80px] text-center '>STORE LOCATOR</h1>
                     <div className=' my-16  flex flex-wrap justify-center items-center gap-5 md:gap-10'>
-                         <Link href={'/'} className='text-[30px] font-bold hover:text-secondary hover:underline'> MACYS </Link>
-                         <Link href={'/'} className='text-[30px] font-bold hover:text-secondary hover:underline'>BELK</Link>
-                         <Link href={'/'} className='text-[30px] font-bold hover:text-secondary hover:underline'>DXL</Link>
-                         <Link href={'/'} className='text-[30px] font-bold hover:text-secondary hover:underline'> VON MAUR</Link>
+                         <Link href={'/'} className=' text-[22px] lg:text-[30px] font-bold hover:text-secondary hover:underline'> MACYS </Link>
+                         <Link href={'/'} className=' text-[22px] lg:text-[30px] font-bold hover:text-secondary hover:underline'>BELK</Link>
+                         <Link href={'/'} className=' text-[22px] lg:text-[30px] font-bold hover:text-secondary hover:underline'>DXL</Link>
+                         <Link href={'/'} className=' text-[22px] lg:text-[30px] font-bold hover:text-secondary hover:underline'> VON MAUR</Link>
                     </div>
                </div>
                <div className=' max-w-[1380px]  mx-auto'>

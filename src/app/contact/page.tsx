@@ -6,7 +6,7 @@ const page = () => {
           <div>
                <div className='  max-w-[690px] mx-auto py-9 px-2'>
                     <h1 className='text-[40px] font-bold md:text-[50px] text-center '>CONTACT US</h1>
-                    <p className='text-[22px] font-light leading-[40px] text-center mt-10 py-3'> INTERESTED IN LEARNING MORE ABOUT TALLIA? <br /> LEAVE US A MESSAGE AND WE’LL GET BACK TO YOU. </p>
+                    <p className=' text-[19px] lg:text-[22px] font-light leading-[30px] lg:leading-[40px] text-center mt-10 py-3'> INTERESTED IN LEARNING MORE ABOUT TALLIA? <br /> LEAVE US A MESSAGE AND WE’LL GET BACK TO YOU. </p>
 
                     <div className=' py-8'>
                          <form action="">

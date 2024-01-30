@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import instagram1 from "../../../assets/Home/instagram (1).jpg"
 import instagram2 from "../../../assets/Home/instagram (2).jpg"
 import instagram3 from "../../../assets/Home/instagram (3).jpg"
@@ -6,17 +7,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PiCopySimpleFill } from "react-icons/pi";
 import { FaInstagram } from "react-icons/fa6";
-
+import AOS from "aos";
 const Instagram = () => {
+
+     useEffect(() => {
+          AOS.init();
+     }, []);
+
      return (
           <div>
                <div>
-                    <h1 className='  text-center text-[40px] lg:text-[100px]  font-extrabold uppercase '> #BE<span className='text-shadow '>SEEN</span>IN<span className='text-shadow '>ANY</span>SCENE</h1>
+                    <h1  className='  text-center text-[40px] lg:text-[100px]  font-extrabold uppercase '> #BE<span className='text-shadow '>SEEN</span>IN<span className='text-shadow '>ANY</span>SCENE</h1>
                </div>
                {/* instagram card  */}
 
                <div className=' grid md:grid-cols-3 gap-2'>
-                    <div className=' group relative w-full overflow-hidden'>
+                    <div  className=' group relative w-full overflow-hidden'>
                          <Link href={'/'} className=' w-full overflow-hidden'>
                               < Image className=' w-full   group-hover:scale-105 duration-200' src={instagram3} alt='image'></Image>
                               <div className=' absolute top-0   z-20 right-2 p-2'>

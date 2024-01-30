@@ -14,7 +14,7 @@ export default function Home() {
       <div className=' relative  max-h-[90vh] overflow-hidden'>
         <Image className=' relative w-full  h-full' src={hero2} alt='hero'></Image>
         <div className=' absolute  left-1/2 top-2/3 '>
-          <CustomLinkButton title="shop new" path="/"></CustomLinkButton>
+          <CustomLinkButton title="ABOUT US" path="/about-us"></CustomLinkButton>
         </div>
       </div>
       <div className=" relative h-full pb-[65px]">
@@ -31,13 +31,13 @@ export default function Home() {
       <div className=' relative  max-h-[90vh] overflow-hidden'>
         <Image className=' relative w-full    h-full' src={hero1} alt='hero'></Image>
         <div className=' absolute  left-1/2 top-2/3 '>
-          <CustomLinkButton title="WHERE TO BUY" path="/"></CustomLinkButton>
+          <CustomLinkButton title="WHERE TO BUY" path="/store-locator"></CustomLinkButton>
         </div>
       </div>
       <div className=' relative  max-h-[90vh] overflow-hidden  border-t border-[#fff]'>
         <Image className=' relative w-full    h-full' src={hero3} alt='hero'></Image>
         <div className=' absolute  left-1/2 top-2/3 '>
-          <CustomLinkButton title="CONTACT" path="/"></CustomLinkButton>
+          <CustomLinkButton title="CONTACT" path="/contact"></CustomLinkButton>
         </div>
       </div>
       <Instagram></Instagram>

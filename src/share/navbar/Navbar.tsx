@@ -7,7 +7,6 @@ import { IoClose } from "react-icons/io5";
 import Menu from "./menu";
 import { Collapse } from "react-collapse";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
 const Navbar = () => {
      const [active, setActive] = useState(false)
      return (
@@ -71,15 +70,13 @@ const Navbar = () => {
                          </div>
                          <div onClick={() => setActive(!active)} className="  lg:hidden">
                               {
-                                   active ? <IoClose className="  text-secondary text-[20px]  lg:text-[24px]" /> : <FaBars className=" text-primary hover:text-secondary text-[20px]  lg:text-[24px]"  size={24} />
+                                   active ? <IoClose className="  text-secondary text-[20px]  lg:text-[24px]" /> : <FaBars className=" text-primary hover:text-secondary text-[20px]  lg:text-[24px]" size={24} />
                               }
                          </div>
                     </div>
                     <div className=" lg:hidden">
                          <Collapse isOpened={active}>
-
                               <Menu setActive={setActive}></Menu>
-
                          </Collapse>
                     </div>
                </div>

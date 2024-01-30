@@ -10,7 +10,7 @@ const Hero = () => {
                     <video className='video  overflow-hidden' src={"https://www.tallia.com/wp-content/uploads/2023/08/Tallia-F23-CAMPAIGN-VIDEO-FINAL-.mp4"} autoPlay loop muted />
                     <div className="content">
                          <div>
-                              <CustomLinkButton title='shop new' path='/'></CustomLinkButton>
+                              <CustomLinkButton title='shop new' path='/shop'></CustomLinkButton>
                          </div>
                     </div>
                </div>
