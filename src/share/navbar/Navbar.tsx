@@ -34,7 +34,7 @@ const Navbar = () => {
                               </div>
                               <div className=" group ">
                                    <div>
-                                        <Link href={'/'} className="  flex items-center gap-2 text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
+                                        <Link href={'/collections'} className="  flex items-center gap-2 text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase ">
                                              <span> COLLECTIONS</span>
                                              <MdKeyboardArrowDown size={20} />
                                              <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
@@ -42,9 +42,9 @@ const Navbar = () => {
                                    </div>
                                    <div className="  group-hover:block hover:block hidden duration-200   absolute z-30    ">
                                         <div className="  space-y-3 flex flex-col  gap-3  mt-[32px] bg-white    p-3" >
-                                             <Link href={'/'} className="hover:text-[#ff6900] text-primary duration-200"> Fall/Winter 2023 </Link>
-                                             <Link href={'/'} className="hover:text-[#ff6900] text-primary duration-200">  Spring/Summer 2023 </Link>
-                                             <Link href={'/'} className="hover:text-[#ff6900] text-primary duration-200"> Fall/Winter 2022 </Link>
+                                             <Link href={'/collections/fall-winter-2023'} className="hover:text-[#ff6900] text-primary duration-200"> Fall/Winter 2023 </Link>
+                                             <Link href={'/collections/spring-summer-2023'} className="hover:text-[#ff6900] text-primary duration-200">  Spring/Summer 2023 </Link>
+                                             <Link href={'/collections/fall-winter-2022'} className="hover:text-[#ff6900] text-primary duration-200"> Fall/Winter 2022 </Link>
                                         </div>
                                    </div>
                               </div>

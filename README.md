@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+ <img   src="https://i.ibb.co/G3XP41Q/Screenshot-2024-01-30-100314.png" width="100%" alt="">
 
 ## Getting Started
 
@@ -36,3 +38,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # onedrob-client
 # tallia
+# live link: https://tallia.vercel.app/

@@ -1,7 +1,6 @@
-import CollectionsTitle from '@/components/collections/CollectionsTitle';
-import CollectionsVideo from '@/components/collections/CollectionsVideo';
-import WinterImage from '@/components/collections/WinterImage';
-import React from 'react';
+import CollectionsTitle from "@/components/collections/CollectionsTitle";
+import CollectionsVideo from "@/components/collections/CollectionsVideo";
+import WinterImage from "@/components/collections/WinterImage";
 
 const page = () => {
      return (
