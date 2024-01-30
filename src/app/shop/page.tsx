@@ -2,7 +2,7 @@ import ProductCart from '@/components/common-cart/ProductCart';
 import React from 'react';
 import image1 from "../../../src/assets/product/top1.jpg"
 import Image from 'next/image';
-import { products } from '@/utits/prodcut';
+import { products } from '@/utils/product';
 const page = () => {
      return (
           <div>

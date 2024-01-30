@@ -1,4 +1,5 @@
 import SearchRadius from '@/components/search-radius/SearchRadius';
+import SelectLocation from '@/components/selectLocation/SelectLocation';
 import Link from 'next/link';
 import React from 'react';
 
@@ -15,10 +16,10 @@ const page = () => {
                     </div>
                </div>
                <div className=' max-w-[1380px]  mx-auto'>
-                    <div className=' border my-1 py-[14px] px-6  lg:rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full'>
+                    <div className=' border my-1 py-[14px] px-2 md:px-6  lg:rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full'>
                          <div className=' grid md:grid-cols-2 gap-4'>
-                              <div className=' flex items-center justify-start  flex-col md:flex-row gap-4'>
-                                   <p className='text-[15px] w-[25%]  text-primary font-bold'>YOUR LOCATION</p>
+                              <div className=' flex items-start lg:items-center justify-center  flex-col md:flex-row gap-4'>
+                                   <p className='text-[15px] md:w-[25%]  text-primary font-bold'>YOUR LOCATION</p>
                                    <div className=' w-full'>
                                         <input className='  w-full  bg-white p-2 rounded-[70px]' type="text" placeholder='' name="" id="" />
                                    </div>
@@ -34,6 +35,12 @@ const page = () => {
                               </div>
                          </div>
                     </div>
+
+                      {/* select location  */}
+
+                      <div>
+                          <SelectLocation></SelectLocation>
+                      </div>
                </div>
           </div>
      );
