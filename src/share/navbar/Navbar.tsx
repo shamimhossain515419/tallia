@@ -15,7 +15,7 @@ const Navbar = () => {
                <div className="  fixed    top-0 w-full left-0 right-0 bg-[#ffffffbc] z-50      ">
                     <div className="  px-6   py-5 flex justify-between items-center gap-2  ">
                          <Link href={'/'}>
-                              <h1 className="text-5xl  hover:text-[#000000] duration-100 cursor-pointer text-secondary uppercase   tracking-wide font-normal">tallia</h1>
+                              <h1 className=" text-2xl lg:text-5xl  hover:text-[#000000] duration-100 cursor-pointer text-secondary uppercase   tracking-wide font-normal">tallia</h1>
                          </Link>
                          <div className="  hidden lg:flex items-center  md:gap-6 xl:gap-12">
                               <div>
@@ -69,16 +69,16 @@ const Navbar = () => {
                                    </Link>
                               </div>
                          </div>
-                         <div onClick={() => setActive(!active)} className=" text-secondary lg:hidden">
+                         <div onClick={() => setActive(!active)} className="  lg:hidden">
                               {
-                                   active ? <IoClose size={24} /> : <FaBars size={24} />
+                                   active ? <IoClose className="  text-secondary text-[20px]  lg:text-[24px]" /> : <FaBars className=" text-primary hover:text-secondary text-[20px]  lg:text-[24px]"  size={24} />
                               }
                          </div>
                     </div>
                     <div className=" lg:hidden">
                          <Collapse isOpened={active}>
 
-                              <Menu></Menu>
+                              <Menu setActive={setActive}></Menu>
 
                          </Collapse>
                     </div>

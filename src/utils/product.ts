@@ -15,7 +15,7 @@ export const products: Product[] = [
           name: "VENEZIA SPORT COAT",
           subtitle: "Flannel Plaid Slim Sport Coats",
           image1: image1_1,
-          image2: image1_2,
+          image2: "",
           image3: "",
           image4: "",
           color: "Brown Plaid",

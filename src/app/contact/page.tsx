@@ -4,7 +4,7 @@ import React from 'react';
 const page = () => {
      return (
           <div>
-               <div className='  max-w-[690px] mx-auto py-9'>
+               <div className='  max-w-[690px] mx-auto py-9 px-2'>
                     <h1 className='text-[40px] font-bold md:text-[50px] text-center '>CONTACT US</h1>
                     <p className='text-[22px] font-light leading-[40px] text-center mt-10 py-3'> INTERESTED IN LEARNING MORE ABOUT TALLIA? <br /> LEAVE US A MESSAGE AND WE’LL GET BACK TO YOU. </p>
 
