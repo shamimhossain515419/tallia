@@ -12,26 +12,26 @@ const page = () => {
                          <form action="">
                               {/* input name  */}
                               <div className=' w-full  py-3'>
-                                   <p className='text-[20px] uppercase ml-2   font-normal'>NAME  <span className=' text-secondary'>*</span></p>
-                                   <input className=' outline-0  border my-1 p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="text" name="name" id="" />
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>NAME  <span className=' text-secondary'>*</span></p>
+                                   <input className=' outline-0  border my-1 p-[8px] lg:p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="text" name="name" id="" />
 
                               </div>
                               {/* input eamil  */}
                               <div className=' w-full  py-3'>
-                                   <p className='text-[20px] uppercase ml-2   font-normal'>Email  <span className=' text-secondary'>*</span></p>
-                                   <input className=' outline-0  border my-1 p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="email" name="email" id="" />
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>Email  <span className=' text-secondary'>*</span></p>
+                                   <input className=' outline-0  border my-1 p-[8px] lg:p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="email" name="email" id="" />
 
                               </div>
                               {/* input COMPANY NAME  */}
                               <div className=' w-full  py-3 '>
-                                   <p className='text-[20px] uppercase ml-2   font-normal'>COMPANY NAME  <span className=' text-secondary'>*</span></p>
-                                   <input className=' outline-0  border my-1 p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="text" name="company" id="" />
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>COMPANY NAME  <span className=' text-secondary'>*</span></p>
+                                   <input className=' outline-0  border my-1 p-[8px] lg:p-[14px] rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full' type="text" name="company" id="" />
 
                               </div>
                               <div className=' w-full  py-3 '>
-                                   <p className='text-[20px] uppercase ml-2   font-normal'>COMPANY NAME  <span className=' text-secondary'>*</span></p>
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>COMPANY NAME  <span className=' text-secondary'>*</span></p>
                                    <div>
-                                        <select className=' outline-0  border my-1 p-[14px]  rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full'>
+                                        <select className=' outline-0  border my-1 p-[8px] lg:p-[14px]  rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full'>
 
                                              <option className='text-[15px]   font-normal'> Customer Services</option>
                                              <option> Marketing</option>
@@ -43,11 +43,11 @@ const page = () => {
                                    </div>
                               </div>
                               <div className=' w-full  py-3 '>
-                                   <p className='text-[20px] uppercase ml-2   font-normal'>MESSAGE <span className=' text-secondary'> *</span></p>
-                                   <textarea className=' outline-0  border my-1 p-[14px] rounded-[20px] bg-[#ECECEC] border-[#8C8C8C] w-full' name="massage" id="" cols={20} rows={8}></textarea>
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>MESSAGE <span className=' text-secondary'> *</span></p>
+                                   <textarea className=' outline-0  border my-1 p-[8px] lg:p-[14px] rounded-[20px] bg-[#ECECEC] border-[#8C8C8C] w-full' name="massage" id="" cols={20} rows={6}></textarea>
                               </div>
                               <div className=' flex justify-end items-center  gap-1'>
-                                   <button type='submit' className='px-10 py-[10px]  text-[17px]  uppercase bg-primary hover:bg-secondary duration-500  text-white  rounded-[100px]'> Submit</button>
+                                   <button type='submit' className='px-10 py-[7px] lg:py-[10px]  text-[12px] lg:text-[17px]  uppercase bg-primary hover:bg-secondary duration-500  text-white  rounded-[100px]'> Submit</button>
                               </div>
                          </form>
                     </div>

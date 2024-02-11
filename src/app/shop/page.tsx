@@ -11,7 +11,7 @@ const page = () => {
 
 
                          <div className=' py-3 grid lg:grid-cols-3 gap-4'>
-                              <div className=' lg:col-span-2   h-[600px] '>
+                              <div className=' lg:col-span-2   h-[450px] lg:h-[600px] '>
                                    <div className=' relative group  w-full h-full'>
                                         <Image className=' w-full h-full   overflow-hidden' src={image1} alt='image'></Image>
 

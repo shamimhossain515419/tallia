@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Serif&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Serif&display=swap");
 
 body {
   background-color: #fff;
@@ -10,8 +10,7 @@ body {
 }
 
 .ternaryFont {
-  font-family: 'Oswald', sans-serif;
-
+  font-family: "Oswald", sans-serif;
 }
 
 .primary {
@@ -38,15 +37,13 @@ body {
   overflow: hidden;
   color: #000000;
   font-family: "Rift", Sans-serif;
-  Letter-spacing: 2px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  -webkit-text-fiLL-color: transparent;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
   text-shadow: 2px 2px 4px rgb(255, 255, 255);
-
 }
 
 .transaction_div {
   transform: translate(-50%, -50%);
-
 }

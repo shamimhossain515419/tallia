@@ -1,18 +1,17 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./index.css"
 import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 import Image from 'next/image';
 import image1 from "../../assets/about/about-hero.jpg"
 import image2 from "../../assets/about/about-2.jpg"
+import { motion, useInView } from "framer-motion"
 const Page = () => {
 
      const [scrollPosition, setScrollPosition] = useState(0);
-     const [beBold, setBeBold] = useState("");
-     console.log(scrollPosition);
-     console.log(beBold);
 
+     const [beBold, setBeBold] = useState("");
      useEffect(() => {
           const handleScroll = () => {
                const currentPosition = window.scrollY;
@@ -33,16 +32,36 @@ const Page = () => {
           window.addEventListener("scroll", handleScroll);
      })
 
-     // Add the scroll event listener
+     const defaultAnimation = {
+          hidden: {
+               opacity: 0,
+               y: 100
+          },
+          visible: {
+               opacity: 1,
+               y: 0
+          }
+     }
 
      return (
           <div className=' pt-5 w-full'>
                <div>
-                    <div className=' max-w-[1300px] mx-auto' >
+                    <div className=' max-w-[1300px] mx-auto'>
                          {/* about title  */}
-                         <div>
+                         <div className=' overflow-hidden'>
                               <div>
-                                   <h1 className={` ternaryFont text-[30px]  md:text-[40px] lg:text-[70px] text-center md:text-start  text-primary  font-semibold    leading-[50px]  lg:leading-[100px] uppercase`}> Fashion <span className='text-shadow'>is an  expression</span> of  Individuality  And  <span className='text-shadow'>personality.</span> </h1>
+                                   <motion.p initial="hidden" animate={"visible"} transition={{ staggerChildren: 0.3 }} className={` ternaryFont text-[30px]  block md:text-[40px] lg:text-[70px] text-center md:text-start  text-primary  font-semibold    leading-[50px]  lg:leading-[100px] uppercase`}>
+                                        <motion.span className=''
+                                             variants={defaultAnimation}
+                                        >Fashion</motion.span>
+                                        <motion.span
+                                             variants={defaultAnimation}
+                                             className='text-shadow '> is an  expression</motion.span>
+                                        <motion.span className=''
+                                             variants={defaultAnimation}> of  Individuality  And</motion.span>
+                                        <motion.span
+                                             variants={defaultAnimation}
+                                             className='text-shadow '> personality.</motion.span> </motion.p>
                               </div>
                          </div>
                     </div>

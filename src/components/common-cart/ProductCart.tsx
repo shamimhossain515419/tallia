@@ -10,7 +10,7 @@ const ProductCart = ({ product }: any) => {
           <div>
                <div onClick={() => setActive(!active)} className="   w-full cursor-pointer">
                     <div className="group">
-                         <div className=" relative  w-full h-[600px]">
+                         <div className=" relative  w-full h-[450px] lg:h-[600px]">
 
                               {/* first image  */}
                               <Image
