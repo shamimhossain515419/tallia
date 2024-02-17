@@ -29,7 +29,7 @@ const page = () => {
 
                               </div>
                               <div className=' w-full  py-3 '>
-                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>COMPANY NAME  <span className=' text-secondary'>*</span></p>
+                                   <p className=' text-[16px] lg:text-[20px] uppercase ml-2   font-normal'>WHAT CAN WE HELP YOU WITH?   <span className=' text-secondary'>*</span></p>
                                    <div>
                                         <select className=' outline-0  border my-1 p-[8px] lg:p-[14px]  rounded-[100px] bg-[#ECECEC] border-[#8C8C8C] w-full'>
 

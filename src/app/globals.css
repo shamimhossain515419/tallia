@@ -13,6 +13,10 @@ body {
   font-family: "Oswald", sans-serif;
 }
 
+.container {
+  @apply max-w-[1250px] mx-auto;
+}
+
 .primary {
   color: #000000;
 }
