@@ -23,7 +23,7 @@ const authOptions = {
         email: { label: "Email", type: "text", placeholder: "Enter Email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         const { email, password, name } = credentials;
         const user = { password, email, name };
         return user;

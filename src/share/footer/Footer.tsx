@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaInstagram } from 'react-icons/fa';
 
-const Footer = () => {
+const Footer = ({ products }: any) => {
      return (
           <div className='bg-[#EDEDED] py-10'>
                <div className=' max-w-[1140px] mx-auto px-3'>
@@ -23,7 +23,7 @@ const Footer = () => {
                     {/* footer menu  */}
                     <div className="     flex  justify-center lg:justify-between items-center gap-2  ">
                          <Link href={'/'}>
-                              <h1 className="text-4xl text-center  md:text-start text-[#000000] duration-100 cursor-pointer  uppercase   tracking-wide font-normal">Tallia</h1>
+                              <h1 className="text-4xl text-center  md:text-start text-[#000000] duration-100 cursor-pointer  uppercase   tracking-wide font-normal">{products?.data?.name}</h1>
                          </Link>
                          <div className="  hidden lg:flex items-center  md:gap-6 xl:gap-12">
                               <div>
@@ -73,7 +73,7 @@ const Footer = () => {
 
                     </div>
 
-                    <div className=' pt-8'> 
+                    <div className=' pt-8'>
                          <p className='text-[#585656] text-center md:text-start text-[15px]'>© Copyright | Tallia | All Rights Reserved</p>
                     </div>
 

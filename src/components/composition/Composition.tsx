@@ -1,8 +1,9 @@
 import React from 'react';
+import Review from '../review/Review';
 const Composition = ({ setOpen }: any) => {
     return (
         <><div className=" min-h-screen flex justify-center items-center  min-w-screen bg-[#000000ce]  z-[100] fixed top-0 left-0 bottom-0 right-0">
-            <div className=" relative max-w-[1000px]  min-h-[60vh] grid items-start  bg-white md:grid-cols-2 gap-3 p-7">
+            <div className=" relative max-w-[900px]  h-[100vh] grid items-start  bg-white gap-3 p-7 overflow-y-auto">
                 <div>
                     <h1 className="text-[16px]  font-normal">COMPOSITION & CARE</h1>
                     <p className=" pt-3 text-[15px] font-normal">COMPOSITION</p>
@@ -19,7 +20,16 @@ const Composition = ({ setOpen }: any) => {
                     <div className=" text-start pl-2 pt-6">
                         <p onClick={() => setOpen(false)} className="uppercase    tracking-[1.5px] cursor-pointer underline text-[12px] font-normal">View more</p>
                     </div>
+
+
+                    {/* reeview section  */}
+
+                    <div className=' pt-8'>
+                        <Review />
+                    </div>
+
                 </div>
+
             </div>
         </div>
         </>
