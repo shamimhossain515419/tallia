@@ -1,9 +1,13 @@
+"use client"
 import ProductCart from '@/components/common-cart/ProductCart';
 import React from 'react';
 import image1 from "../../../src/assets/product/top1.jpg"
 import Image from 'next/image';
 import { products } from '@/utils/product';
-const page = () => {
+import { useGetProductByTopCategoryQuery } from '@/redux/features/products/productApi';
+const Page = () => {
+     const { data: productData } = useGetProductByTopCategoryQuery("");
+     const products = productData?.data;
      return (
           <div className=' w-full'>
                <div className=' max-w-[1400px] mx-auto py-4 '>
@@ -43,21 +47,21 @@ const page = () => {
                               </div>
                               <div className=' lg:col-span-1'>
                                    {
-                                        products?.slice(1, 2)?.map((product, index) => <ProductCart product={product} key={index}></ProductCart>)
+                                        products?.slice(1, 2)?.map((product: any, index: number) => <ProductCart product={product} key={index}></ProductCart>)
                                    }
 
                               </div>
                          </div>
                          <div className=' grid  lg:grid-cols-3 gap-2'>
                               {
-                                   products?.map((product, index) => <ProductCart product={product} key={index}></ProductCart>)
+                                   products?.map((product: any, index: number) => <ProductCart product={product} key={index}></ProductCart>)
                               }
                          </div>
 
                          <div className=' py-3 grid lg:grid-cols-3 gap-4'>
                               <div className=' lg:col-span-1'>
                                    {
-                                        products?.slice(2, 3)?.map((product, index) => <ProductCart product={product} key={index}></ProductCart>)
+                                        products?.slice(2, 3)?.map((product: any, index: number) => <ProductCart product={product} key={index}></ProductCart>)
                                    }
                               </div>
                               <div className=' lg:col-span-2   h-[600px] '>
@@ -94,7 +98,7 @@ const page = () => {
                          </div>
                          <div className=' grid  lg:grid-cols-3 gap-2'>
                               {
-                                   products?.map((product, index) => <ProductCart product={product} key={index}></ProductCart>)
+                                   products?.map((product: any, index: number) => <ProductCart product={product} key={index}></ProductCart>)
                               }
                          </div>
                     </div>
@@ -103,4 +107,4 @@ const page = () => {
      );
 };
 
-export default page;
+export default Page;

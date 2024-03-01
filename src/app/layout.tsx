@@ -4,6 +4,9 @@ import "./globals.css";
 import Navbar from "@/share/navbar/Navbar";
 import Footer from "@/share/footer/Footer";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
+import ReduxProvider from "@/components/reduxProvider/ReduxProvider";
+import Sitebar from "@/components/sidebar/Sidebar";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,19 +35,23 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <div>
+        <ReduxProvider>
+          <AuthProvider>
             <div>
-              <Navbar products={products} />
+              <div>
+                <Navbar products={products} />
+              </div>
+              <div className=" min-h-[70vh] pt-[90px]">
+                {children}
+              </div>
+              <div>
+                <Footer products={products} />
+              </div>
             </div>
-            <div className=" min-h-[70vh] pt-[90px]">
-              {children}
-            </div>
-            <div>
-              <Footer products={products} />
-            </div>
-          </div>
-        </AuthProvider>
+            <Sitebar />
+            <Toaster position="top-center" reverseOrder={false} />
+          </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

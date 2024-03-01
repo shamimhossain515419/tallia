@@ -5,10 +5,28 @@ const nextConfig = {
     GROUP_ID: "3",
   },
   images: {
-    domains: [
-      "www.maisonlabiche.com",
-      "cdn.shopify.com",
-      "cdn-images.farfetch-contents.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.maisonlabiche.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-images.farfetch-contents.com",
+      },
+
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+      },
+      {
+        protocol: "https",
+        hostname: "getmicrojobs.com",
+      },
+      {
+        protocol: "https",
+        hostname: "gravatar.com",
+      },
     ],
   },
 };

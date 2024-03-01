@@ -11,6 +11,8 @@ import { useSession } from "next-auth/react";
 const Navbar = ({ products }: any) => {
      const [active, setActive] = useState(false);
      const { data: session } = useSession();
+     console.log(session);
+
      return (
           <div className=" relative">
                <div className="  fixed    top-0 w-full left-0 right-0 bg-[#ffffffbc] z-50      ">

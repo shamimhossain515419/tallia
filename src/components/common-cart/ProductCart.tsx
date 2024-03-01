@@ -4,8 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import ProductModal from "./ProductModal";
 const ProductCart = ({ product }: any) => {
-     const { image1, image2, name } = product || {};
-     const [active, setActive] = useState(false)
+     const { photos, name } = product || {};
+     let photoArray = [];
+     if (photos) {
+          photoArray.push(...photos.split(","));
+     }
+     const [active, setActive] = useState(false);
      return (
           <div>
                <div onClick={() => setActive(!active)} className="   w-full cursor-pointer">
@@ -13,15 +17,15 @@ const ProductCart = ({ product }: any) => {
                          <div className=" relative  w-full h-[450px] lg:h-[600px]">
 
                               {/* first image  */}
-                              <Image
-                                   src={image1}
+                              <Image width={400} height={300}
+                                   src={process.env.BASE_URL + "/images/" + photoArray?.[0]}
                                    alt="Image 1"
                                    className=" w-full h-full  object-fill transition duration-500 transform  cursor-pointer"
                               />
                               {/* second image  */}
                               {
-                                   image2 ? <Image
-                                        src={image2}
+                                   photoArray?.[1] ? <Image width={400} height={300}
+                                        src={process.env.BASE_URL + "/images/" + photoArray?.[1]}
                                         alt="Image 2"
                                         className="w-full h-full transition duration-500 opacity-0  group-hover:opacity-100 absolute top-0 left-0 "
                                    /> : null
@@ -32,7 +36,7 @@ const ProductCart = ({ product }: any) => {
                     </div>
                </div>
                {
-                    active ? <ProductModal product={product} setActive={setActive} /> : null
+                    active ? <ProductModal id={product?.id} setActive={setActive} /> : null
                }
           </div>
      );
