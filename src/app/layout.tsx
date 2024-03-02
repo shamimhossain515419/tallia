@@ -8,6 +8,7 @@ import ReduxProvider from "@/components/reduxProvider/ReduxProvider";
 import Sitebar from "@/components/sidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
 import TokenProvider from "@/components/AuthProvider/TokenProvider";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NextTopLoader />
         <ReduxProvider>
           <AuthProvider>
             <TokenProvider>
