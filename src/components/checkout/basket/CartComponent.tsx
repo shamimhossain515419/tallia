@@ -65,12 +65,12 @@ const CartComponent = ({ product }: any) => {
                                     </div>
                                 </div>
                                 {/* wishlist action  */}
-                                <div onMouseLeave={() => setHeart(false)} onMouseMoveCapture={() => setHeart(true)} className=' group  cursor-pointer  flex items-center gap-2 pt-4'>
+                                {/* <div onMouseLeave={() => setHeart(false)} onMouseMoveCapture={() => setHeart(true)} className=' group  cursor-pointer  flex items-center gap-2 pt-4'>
                                     {
                                         heart ? <TiHeartFullOutline className='group-hover:text-[#00000080]' size={24} /> : <TiHeartOutline size={24} />
                                     }
                                     <p className='text-[14px] group-hover:text-[#00000080]   secondary font-normal' >Move to wishlist</p>
-                                </div>
+                                </div> */}
                             </div>
 
                         </div>

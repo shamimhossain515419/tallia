@@ -31,7 +31,7 @@ const ProductModal = ({ id, setActive }: any) => {
      const router = useRouter();
      const handleCart = (product: any) => {
           if (existingItem) {
-               router.push("/checkout/basket");
+               router.push("/cart");
           } else {
                if (!activeColor && colors.length) {
                     toast.error("Select Color");
@@ -110,7 +110,7 @@ const ProductModal = ({ id, setActive }: any) => {
                                         </div>
                                    ) : null}
 
-                                   {sizes?.length ? (
+                                   {colors?.length > 0 ? (
                                         <div className="text-[#7a7a7a] flex  justify-center gap-2 py-1">
                                              <h1 className=" text-[17px]">Colors: </h1>
                                              <div className=" flex items-center justify-center gap-2">

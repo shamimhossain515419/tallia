@@ -1,10 +1,20 @@
 "use client";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
-
+import toast from "react-hot-toast";
+import Cookies from 'js-cookie'
 const DashboardSidebar = () => {
     const pathName = usePathname();
+    const router = useRouter()
+    const handleLogout = () => {
+        signOut();
+        Cookies.remove("access_token")
+        router.push("/login");
+        toast.success("Success logged out")
+        window.location.reload();
+    }
     if (pathName == "/useraccount") {
         return null;
     }
@@ -120,6 +130,14 @@ const DashboardSidebar = () => {
                             >
                                 Connected services
                             </Link>
+                        </div>
+                        <div>
+                            <button onClick={handleLogout}
+                                className={`text-color font-normal hover:underline text-[16px]  py-2 `}
+                            >
+                                {" "}
+                                Logout
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -111,7 +111,7 @@ const Navbar = ({ products }: any) => {
                                              href={"/useraccount"}
                                              className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase "
                                         >
-                                             <span>{session?.user?.email?.slice(0, 8)}</span>
+                                             <span>Account</span>
                                              <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
                                         </Link>
                                    ) : (

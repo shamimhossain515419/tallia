@@ -62,7 +62,7 @@ const Page = () => {
       toast.error("Please see the address");
     } else {
       router.push("/checkout/shipping");
-      toast.success("Success add address");
+
     }
   };
 

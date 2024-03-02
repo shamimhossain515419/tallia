@@ -2,12 +2,23 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Page = () => {
-  const [payActive, setPayActive] = useState(false);
+  const [payType, setPayType] = useState(false);
+  const { value: address_id } = useSelector((state: any) => state.address);
   const router = useRouter();
+  const handlePayment = () => {
+    if (!address_id) {
+      toast.error("Please select a address")
+    }
+    if (!setPayType) {
+
+    }
+  }
   return (
     <div>
       <div className="flex items-center justify-center text-stone-500 ">
@@ -93,8 +104,8 @@ const Page = () => {
             <div className=" flex items-start gap-3">
               <div>
                 <div
-                  onClick={() => setPayActive(false)}
-                  className={` flex justify-center items-center ${payActive ? "border border-[#3333337b]" : " bg-secondary"
+                  onClick={() => setPayType(false)}
+                  className={` flex justify-center items-center ${payType ? "border border-[#3333337b]" : " bg-secondary"
                     }  w-[20px] h-[20px] cursor-pointer rounded-full`}
                 >
                   <p className=" w-[5px] h-[5px] bg-white rounded-full"></p>
@@ -116,8 +127,8 @@ const Page = () => {
             <div className=" flex items-start gap-3">
               <div>
                 <div
-                  onClick={() => setPayActive(true)}
-                  className={` flex justify-center items-center ${payActive ? "bg-secondary" : " border border-[#3333337b]"
+                  onClick={() => setPayType(true)}
+                  className={` flex justify-center items-center ${payType ? "bg-secondary" : " border border-[#3333337b]"
                     }  w-[20px] h-[20px] cursor-pointer rounded-full`}
                 >
                   <p className=" w-[5px] h-[5px] bg-white rounded-full"></p>
@@ -150,7 +161,7 @@ const Page = () => {
         </div>
         <div className="flex justify-end mt-4">
           <button
-            onClick={() => router.push("/checkout/payment")}
+            onClick={handlePayment}
             className="bg-black hover:bg-secondary duration-300 px-6  py-[10px] lg:py-[14px] text-white text-[15px]   font-medium rounded-[5px] uppercase "
           >
             {" "}
