@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 
-const Summary = () => {
+const Summary = ({ totalAmount }: any) => {
 
+    const deliveryCharge = totalAmount / 100 * 5;
 
     return (
         <div>
@@ -17,24 +18,24 @@ const Summary = () => {
                         <div className=' flex justify-between gap-2 items-center'>
                             {/* Subtotal  */}
                             <p>Subtotal</p>
-                            <span>${34}</span>
+                            <span>${totalAmount}</span>
                         </div>
                         <div className='  py-3 flex justify-between gap-2 items-center'>
                             {/* Delivery  */}
                             <p>Delivery</p>
-                            <span>${5334}</span>
+                            <span>${deliveryCharge}</span>
                         </div>
                         <div className=' my-2 h-[2px] w-full bg-[#aca2a2d7] '></div>
 
                         <div className='  py-3 flex justify-between gap-2 items-center'>
                             {/* Total */}
                             <p className=' font-bold'>Total</p>
-                            <p>USD  <span className=' font-bold'>${34534}</span></p>
+                            <p>USD  <span className=' font-bold'>${totalAmount + deliveryCharge}</span></p>
                         </div>
                     </div>
                     <div className=' py-2 w-full'>
                         {/* action button  */}
-                        <button className=' w-full text-white block text-center  duration-200    hover:bg-[#00000073]  primary_bg px-2 py-[10px] rounded-lg text-[16px] font-bold'>Go To Checkout</button>
+                        <Link href={'/checkout/information'} className=' w-full text-white block text-center  duration-200    hover:bg-[#00000073]  primary_bg px-2 py-[10px] rounded-lg text-[16px] font-bold'>Go To Checkout</Link>
                     </div>
                 </div>
             </div>

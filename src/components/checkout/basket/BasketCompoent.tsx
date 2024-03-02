@@ -1,10 +1,15 @@
+"use client"
 import React from 'react';
 import Summary from './Summary';
 import Link from 'next/link';
 import CartComponent from './CartComponent';
+import { useSelector } from 'react-redux';
 
 const BasketCompoent = () => {
-    const cartItems = [2, 3, 5]
+
+    const { cartItems, totalAmount, totalQuantity } = useSelector(
+        (state: any) => state.Cart
+    );
     return (
         <div>
             <div className=' container'>
@@ -15,7 +20,7 @@ const BasketCompoent = () => {
                             <div>
                                 {/* mapping cart product  */}
                                 {cartItems?.length > 0 ? <> {
-                                    cartItems?.map((item, index: number) => <CartComponent key={index} ></CartComponent>)
+                                    cartItems?.map((product: any, index: number) => <CartComponent product={product} key={index} ></CartComponent>)
                                 }
                                 </> : <div className=' py-4'>
                                     {/* if  the product dose not  exist */}
@@ -27,7 +32,7 @@ const BasketCompoent = () => {
 
                         </div>
                         {/* cart summary  */}
-                        <Summary></Summary>
+                        <Summary totalAmount={totalAmount}></Summary>
                     </div>
                 </div>
             </div>

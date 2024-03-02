@@ -11,8 +11,6 @@ import { useSession } from "next-auth/react";
 const Navbar = ({ products }: any) => {
      const [active, setActive] = useState(false);
      const { data: session } = useSession();
-     console.log(session);
-
      return (
           <div className=" relative">
                <div className="  fixed    top-0 w-full left-0 right-0 bg-[#ffffffbc] z-50      ">
@@ -98,7 +96,6 @@ const Navbar = ({ products }: any) => {
                               </div>
                               <div>
                                    <Link
-                                        target="_blank"
                                         href={"https://www.instagram.com/talliaclothing/"}
                                         className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase "
                                    >
@@ -108,14 +105,24 @@ const Navbar = ({ products }: any) => {
                                    </Link>
                               </div>
                               <div>
-                                   <Link
-                                        target="_blank"
-                                        href={"https://www.instagram.com/talliaclothing/"}
-                                        className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase "
-                                   >
-                                        <span>{session?.user?.email?.slice(0, 8)}</span>
-                                        <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
-                                   </Link>
+                                   {/* condition item  */}
+                                   {session?.user?.email ? (
+                                        <Link
+                                             href={"/useraccount"}
+                                             className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase "
+                                        >
+                                             <span>{session?.user?.email?.slice(0, 8)}</span>
+                                             <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
+                                        </Link>
+                                   ) : (
+                                        <Link
+                                             href={"/login"}
+                                             className=" flex gap-3 items-center  text-primary  group  relative  hover:text-[#ff6900] duration-500 text-[16px] font-normal uppercase "
+                                        >
+                                             <span>Login</span>
+                                             <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
+                                        </Link>
+                                   )}
                               </div>
                          </div>
                          <div onClick={() => setActive(!active)} className="  lg:hidden">

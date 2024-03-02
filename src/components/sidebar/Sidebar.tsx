@@ -17,7 +17,6 @@ const Sitebar = () => {
     const products = [1, 2, 3];
     const { totalAmount, cartItems } = useSelector((state: any) => state.Cart);
 
-
     return (
         <div>
             <div className=" ">
@@ -70,8 +69,12 @@ const Sitebar = () => {
                                 )}
                             </div>
 
-                            <div className=" absolute bg-white bottom-10  cursor-pointer w-full ">
-                                <Link onClick={() => dispatch(toggleSideCart())} href={'/checkout/basket'} className=" bg-primary text-[19px] text-white   mx-2 px-2 py-2 flex justify-center items-center gap-2 ">
+                            <div className=" absolute bg-white bottom-0  cursor-pointer w-full ">
+                                <Link
+                                    onClick={() => dispatch(toggleSideCart())}
+                                    href={"/cart"}
+                                    className=" bg-primary text-[19px] text-white  px-2 py-2 flex justify-center items-center gap-2 "
+                                >
                                     <span> Checkout</span>
                                 </Link>
 
@@ -99,7 +102,9 @@ const Sitebar = () => {
                                 <HiShoppingBag size={28} />
                             </div>
                             <h1 className=" text-[16px] text-white font-medium">
-                                {cartItems?.length ? `${cartItems?.length} items` : " Please shop"} {" "}
+                                {cartItems?.length
+                                    ? `${cartItems?.length} items`
+                                    : " Please shop"}{" "}
                             </h1>
                         </div>
                         <div className=" bg-white   primary_color ">

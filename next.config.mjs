@@ -17,7 +17,7 @@ const nextConfig = {
 
       {
         protocol: "https",
-        hostname: "cdn.shopify.com",
+        hostname: "i.ibb.co",
       },
       {
         protocol: "https",
