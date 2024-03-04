@@ -1,4 +1,5 @@
 "use client";
+import { useOrderProductMutation } from "@/redux/features/orders/ordersApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -11,7 +12,12 @@ const Page = () => {
   const [payType, setPayType] = useState(false);
   const { value: address_id } = useSelector((state: any) => state.address);
   const router = useRouter();
-  const handlePayment = () => {
+  const { cartItems, totalAmount, totalQuantity } = useSelector(
+    (state: any) => state.Cart
+  );
+  const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] = useOrderProductMutation()
+  const group_id = process.env.GROUP_ID;
+ const handlePayment = () => {
     if (!address_id) {
       toast.error("Please select a address")
     }
