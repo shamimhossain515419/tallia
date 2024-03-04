@@ -33,7 +33,6 @@ const Page = () => {
             const result = await response.json();
             if (result?.token) {
                 const success = await createAndSetCookie(result?.token);
-                console.log(success);
                 if (success?.massage === "success") {
                     const res = await signIn("credentials", {
                         password,

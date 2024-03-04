@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ShippingAddress = ({ data: address }: any) => {
 
-
     const router = useRouter();
-
     const dispatch = useDispatch();
     const { value } = useSelector((state: any) => state.address);
     const handleOrder = () => {

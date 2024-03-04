@@ -9,7 +9,18 @@ export const ordersApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getordersProduct: builder.query({
+      query: () => `order/get-orders/${process.env.GROUP_ID}`,
+    }),
+    getOrderDetail: builder.query({
+      query: (id) => `order/get-order-details/${id}`,
+      keepUnusedDataFor: 100,
+    }),
   }),
 });
 
-export const { useOrderProductMutation } = ordersApi;
+export const {
+  useOrderProductMutation,
+  useGetOrderDetailQuery,
+  useGetordersProductQuery,
+} = ordersApi;

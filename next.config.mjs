@@ -2,7 +2,7 @@
 const nextConfig = {
   env: {
     BASE_URL: "https://getmicrojobs.com",
-    GROUP_ID: "3",
+    GROUP_ID: "4",
   },
   images: {
     remotePatterns: [

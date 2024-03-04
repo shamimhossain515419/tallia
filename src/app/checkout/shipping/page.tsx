@@ -1,38 +1,74 @@
 "use client";
+import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useOrderProductMutation } from "@/redux/features/orders/ordersApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Page = () => {
-  const [payType, setPayType] = useState(false);
   const { value: address_id } = useSelector((state: any) => state.address);
+  const [payActive, setPayActive] = useState(false);
   const router = useRouter();
+  const { user } = useSelector((state: any) => state.auth);
   const { cartItems, totalAmount, totalQuantity } = useSelector(
     (state: any) => state.Cart
   );
-  const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] = useOrderProductMutation()
-  const group_id = process.env.GROUP_ID;
- const handlePayment = () => {
-    if (!address_id) {
-      toast.error("Please select a address")
-    }
-    if (!setPayType) {
+  
 
+  const dispatch = useDispatch();
+  const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] =
+    useOrderProductMutation();
+  const group_id = process.env.GROUP_ID;
+
+  const OrderHandler = async () => {
+    if (!cartItems.length) {
+      toast.error("Cart is empty");
+      return;
     }
-  }
+    if (!payActive) {
+      router.push("/checkout/payment");
+      return;
+    }
+    const value = {
+      group_id: group_id,
+      customer_id: user?.id,
+      total_amount: totalAmount,
+      total_quantity: totalQuantity,
+      address_id: address_id,
+      items: cartItems,
+    };
+    orderProduct(value);
+  };
+
+  useEffect(() => {
+    if (isSuccess && orderResult) {
+      toast.success(orderResult?.message);
+      dispatch(clearCart());
+    }
+  }, [orderResult, isSuccess, dispatch]);
+
   return (
     <div>
       <div className="flex items-center justify-center text-stone-500 ">
-        <Link className="hover:text-secondary" href={"/cart"}>Cart</Link> <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/information"}>Information</Link>{" "}
+        <Link className="hover:text-secondary" href={"/cart"}>
+          Cart
+        </Link>{" "}
         <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/shipping"}>Shipping</Link> <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/payment"}>Payment</Link>
+        <Link className="hover:text-secondary" href={"/checkout/information"}>
+          Information
+        </Link>{" "}
+        <IoIosArrowForward />
+        <Link className="hover:text-secondary" href={"/checkout/shipping"}>
+          Shipping
+        </Link>{" "}
+        <IoIosArrowForward />
+        <Link className="hover:text-secondary" href={"/checkout/payment"}>
+          Payment
+        </Link>
       </div>
       {/* user address  */}
       <div className=" my-10 px-3 py-2  rounded-[4px] sm:mr-5 border  border-[#3333331f]">
@@ -41,10 +77,7 @@ const Page = () => {
             <p className="text-[12px] md:w-[50px] xl:w-[70px]  md:text-[14px]">
               Contact
             </p>
-            <p className="text-[12px]  md:text-[14px]">
-              {" "}
-              shamimhossain017@gmail.com
-            </p>
+            <p className="text-[12px]  md:text-[14px]"> {user?.email}</p>
           </div>
           <Link className="text-[12px]  md:text-[14px]" href={"/"}>
             {" "}
@@ -110,8 +143,8 @@ const Page = () => {
             <div className=" flex items-start gap-3">
               <div>
                 <div
-                  onClick={() => setPayType(false)}
-                  className={` flex justify-center items-center ${payType ? "border border-[#3333337b]" : " bg-secondary"
+                  onClick={() => setPayActive(false)}
+                  className={` flex justify-center items-center ${payActive ? "border border-[#3333337b]" : " bg-secondary"
                     }  w-[20px] h-[20px] cursor-pointer rounded-full`}
                 >
                   <p className=" w-[5px] h-[5px] bg-white rounded-full"></p>
@@ -133,8 +166,8 @@ const Page = () => {
             <div className=" flex items-start gap-3">
               <div>
                 <div
-                  onClick={() => setPayType(true)}
-                  className={` flex justify-center items-center ${payType ? "bg-secondary" : " border border-[#3333337b]"
+                  onClick={() => setPayActive(true)}
+                  className={` flex justify-center items-center ${payActive ? "bg-secondary" : " border border-[#3333337b]"
                     }  w-[20px] h-[20px] cursor-pointer rounded-full`}
                 >
                   <p className=" w-[5px] h-[5px] bg-white rounded-full"></p>
@@ -167,7 +200,7 @@ const Page = () => {
         </div>
         <div className="flex justify-end mt-4">
           <button
-            onClick={handlePayment}
+            onClick={OrderHandler}
             className="bg-black hover:bg-secondary duration-300 px-6  py-[10px] lg:py-[14px] text-white text-[15px]   font-medium rounded-[5px] uppercase "
           >
             {" "}

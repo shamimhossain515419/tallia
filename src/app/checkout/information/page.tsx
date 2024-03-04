@@ -15,14 +15,14 @@ import InputAnimation from "@/components/inputcomponent/InputAnimation";
 import ShippingAddress from "@/components/address/ShippingAddress";
 
 const Page = () => {
-  const { data: address } = useFetchAddressQuery("");
-  const [createAddress, { data: createResult, isLoading, error, isSuccess }] =
+  const { data: address, error } = useFetchAddressQuery("");
+  const [createAddress, { data: createResult, isLoading, isSuccess }] =
     useCreateAddressMutation();
   const { value: address_id } = useSelector((state: any) => state.address);
   const [activeAddress, setActiveAddress] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  //  handle submit address 
+  //  handle submit address
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const form = e.target;
@@ -48,7 +48,7 @@ const Page = () => {
     createAddress(data);
   };
 
-  //  responsve add address 
+  //  responsve add address
   useEffect(() => {
     if (createResult && isSuccess) {
       dispatch(addressToggle(createResult?.address_id));
@@ -62,18 +62,27 @@ const Page = () => {
       toast.error("Please see the address");
     } else {
       router.push("/checkout/shipping");
-
     }
   };
 
   return (
     <div className=" text-sm ">
       <div className="flex items-center justify-center text-stone-500 ">
-        <Link className="hover:text-secondary" href={"/cart"}>Cart</Link> <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/information"}>Information</Link>{" "}
+        <Link className="hover:text-secondary" href={"/cart"}>
+          Cart
+        </Link>{" "}
         <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/shipping"}>Shipping</Link> <IoIosArrowForward />
-        <Link className="hover:text-secondary" href={"/checkout/payment"}>Payment</Link>
+        <Link className="hover:text-secondary" href={"/checkout/information"}>
+          Information
+        </Link>{" "}
+        <IoIosArrowForward />
+        <Link className="hover:text-secondary" href={"/checkout/shipping"}>
+          Shipping
+        </Link>{" "}
+        <IoIosArrowForward />
+        <Link className="hover:text-secondary" href={"/checkout/payment"}>
+          Payment
+        </Link>
       </div>
       {/* contact */}
       <div className="my-5">
@@ -120,10 +129,7 @@ const Page = () => {
           className="text-[15px] font-medium"
         >
           {" "}
-          {
-            !address?.length ? <></> : " + New Address"
-          }
-
+          {address?.length ? <>+ New Address</> : " "}
         </button>
       </div>
       {/* show all shipping address  */}
@@ -131,7 +137,7 @@ const Page = () => {
         <ShippingAddress data={address} />
       )}
       {/* create shipping address form  */}
-      {activeAddress && address?.length && (
+      {!address?.length || activeAddress ? (
         <form action="" onSubmit={handleSubmit}>
           <div>
             <div className=" py-5 lg:py-8">
@@ -256,7 +262,7 @@ const Page = () => {
             </div>
           </div>
         </form>
-      )}
+      ) : null}
 
       {address?.length > 0 && !activeAddress && (
         <div className=" flex flex-col-reverse lg:flex-row   justify-between items-center gap-2  my-6  lg:py-5 ">

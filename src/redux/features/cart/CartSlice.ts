@@ -145,8 +145,19 @@ const cartSlice = createSlice({
         state.totalQuantity
       );
     },
+
+    clearCart(state) {
+      state.cartItems = [];
+      state.totalQuantity = 0;
+      state.totalAmount = 0;
+      setItemFunc(
+        state.cartItems.map((item) => item),
+        state.totalAmount,
+        state.totalQuantity
+      );
+    },
   },
 });
 
-export const { addItem, deleteItem, removeItem } = cartSlice.actions;
+export const { addItem, deleteItem, clearCart, removeItem } = cartSlice.actions;
 export default cartSlice.reducer;
