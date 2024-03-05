@@ -1,9 +1,46 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-const ReviewForm = () => {
-    const [ratings, setRating] = useState(1);
+import { useSession } from "next-auth/react";
+import { useCreateReviewMutation } from "@/redux/features/review/ReviewApi";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
+const ReviewForm = ({ id }: any) => {
+    const [rating, setRating] = useState(1);
+    const { data: section } = useSession();
+    const [createReview, { data: createReviewResult, error, isSuccess }] =
+        useCreateReviewMutation();
+    const { user } = useSelector((state: any) => state?.auth);
+    const handleReview = (e: any) => {
+        e.preventDefault();
+        const form = e.target;
+        const comment = form?.comment?.value;
+        const data = {
+            comment,
+            rating,
+            group_id: process.env.GROUP_ID,
+            product_id: id,
+            customer_id: user?.id,
+            status: 0,
+        };
+        if (data) {
+            createReview(data);
+        }
+    };
+
+    useEffect(() => {
+        if (createReviewResult && isSuccess) {
+            toast.success(createReviewResult?.message);
+            window.location.reload()
+        }
+    }, [isSuccess, createReviewResult]);
+
+    if (!section?.user) {
+        return null;
+    }
+
+
     return (
         <>
             <div className=" pt-5">
@@ -11,23 +48,23 @@ const ReviewForm = () => {
                 <p className="text-[14px] font-medium py-2">
                     Your email address will not be published. Required fields are marked *
                 </p>
-                <form action="" className=" py-5 ">
+                <form action="" onSubmit={handleReview} className=" py-5 ">
                     {/* Your rating  */}
                     <p className="text-[14px] font-normal">Your rating</p>
                     <Rating
                         style={{ maxWidth: 180 }}
-                        value={ratings}
+                        value={rating}
                         onChange={setRating}
                     />
                     <div className=" py-2">
                         {/* your review  */}
                         <textarea
+                            name="comment"
                             className="w-full h-32 px-4 py-2 border border-[#00000064] outline-0 rounded-md  "
                             placeholder="Your review"
                         ></textarea>
                     </div>
-                    <div className=" py-2">
-                        {/* your name  */}
+                    {/* <div className=" py-2">
                         <input
                             type="text"
                             className="w-full  px-4 py-4 border border-[#00000064] outline-0 rounded-md"
@@ -35,13 +72,12 @@ const ReviewForm = () => {
                         />
                     </div>
                     <div className=" py-2">
-                        {/* your email  */}
                         <input
                             type="email"
                             className="w-full  px-4 py-4 border border-[#00000064] outline-0 rounded-md"
                             placeholder="Your email"
                         />
-                    </div>
+                    </div> */}
                     <div className="flex items-center gap-3">
                         {/* your email  */}
                         <input type="checkbox" name="" id="" />

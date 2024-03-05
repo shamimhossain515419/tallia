@@ -58,8 +58,8 @@ const ProductModal = ({ id, setActive }: any) => {
 
      return (
           <>
-               <div className="  h-screen lg:min-h-screen flex justify-center items-center  min-w-screen bg-[#00000091]  z-50 fixed top-0 left-0 bottom-0 right-0 overflow-y-auto">
-                    <div className="   relative  max-w-[1000px]  grid  items-center p-5  bg-white md:grid-cols-2 gap-3">
+               <div className="  h-screen lg:min-h-screen  flex justify-center items-center  min-w-screen bg-[#00000091]  z-50 fixed top-0 left-0 bottom-0 right-0 overflow-y-auto">
+                    <div className="  relative  max-w-[1000px]  grid  items-center p-5  bg-white md:grid-cols-2 gap-3">
                          <div className=" w-full max-h-[500px] overflow-hidden p-4">
                               {/* slider product image  */}
                               <Swiper
@@ -176,13 +176,14 @@ const ProductModal = ({ id, setActive }: any) => {
 
                          <div
                               onClick={() => setActive(false)}
-                              className=" hover:text-red-500 z-50 cursor-pointer absolute top-1 right-0 p-3"
+                              className=" hover:text-red-500  z-50 cursor-pointer absolute top-1 right-0 p-3"
                          >
                               <IoClose size={24} />
                          </div>
                     </div>
+
                </div>
-               {open && <Composition setOpen={setOpen} />}
+               {open && <Composition id={id} setOpen={setOpen} />}
           </>
      );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Review from '../review/Review';
-const Composition = ({ setOpen }: any) => {
+import { IoClose } from 'react-icons/io5';
+const Composition = ({ setOpen, id }: any) => {
     return (
         <><div className=" min-h-screen flex justify-center items-center  min-w-screen bg-[#000000ce]  z-[100] fixed top-0 left-0 bottom-0 right-0">
             <div className=" relative max-w-[900px]  h-[100vh] grid items-start  bg-white gap-3 p-7 overflow-y-auto">
@@ -25,10 +26,18 @@ const Composition = ({ setOpen }: any) => {
                     {/* reeview section  */}
 
                     <div className=' pt-8'>
-                        <Review />
+                        <Review id={id} />
                     </div>
 
                 </div>
+
+
+                <div
+                    onClick={() => setOpen(false)}
+                    className=" hover:text-red-500  absolute   z-50 cursor-pointer  top-1 right-5 p-3"
+                ><IoClose size={24} />
+                </div>
+
 
             </div>
         </div>
