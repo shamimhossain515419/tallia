@@ -3,7 +3,6 @@ import ProductCart from '@/components/common-cart/ProductCart';
 import React from 'react';
 import image1 from "../../../src/assets/product/top1.jpg"
 import Image from 'next/image';
-import { products } from '@/utils/product';
 import { useGetProductByTopCategoryQuery } from '@/redux/features/products/productApi';
 const Page = () => {
      const { data: productData } = useGetProductByTopCategoryQuery("");

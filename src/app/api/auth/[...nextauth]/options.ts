@@ -11,10 +11,10 @@ const authOptions: any = {
       credentials: {
         email: { label: "Email", type: "text", placeholder: "Enter Email" },
         password: { label: "Password", type: "password" },
+        name: { label: "name", type: "text" },
       },
       async authorize(credentials: any) {
-        const { email, password, name } = credentials;
-        const user = { password, email, name };
+        const user = credentials;
         return user;
       },
     }),

@@ -1,17 +1,14 @@
-"use client"
-
+"use client";
+import ReturnForm from "@/components/useraccount/orders-return/ReturnForm";
 import { useGetOrderDetailQuery } from "@/redux/features/orders/ordersApi";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const Page = ({ params }) => {
     const { data } = useGetOrderDetailQuery(params.id);
-    const orderdetails = data?.order_info || {}
-    console.log(orderdetails);
-
-    const orderProduct = data?.data || []
-    console.log(orderProduct);
-
+    const orderdetails = data?.order_info || {};
+    const orderProduct = data?.data || [];
+    const [activeFrom, setActivedForm] = useState({});
     return (
         <>
             <div className=" w-full mx-auto shadow  my-5 rounded-xl   ">
@@ -45,8 +42,11 @@ const Page = ({ params }) => {
 
                 <div className="">
                     {/*  */}
-                    {
-                        orderProduct?.map((product, i) => <div key={i} className="text-sm p-2 flex justify-between items-center ">
+                    {orderProduct?.map((product, i) => (
+                        <div
+                            key={i}
+                            className="text-sm p-2 flex justify-between items-center "
+                        >
                             <div className=""> {product?.product_name} </div>
                             <div className="">
                                 <Image
@@ -61,10 +61,24 @@ const Page = ({ params }) => {
                             </div>
                             <div className="">Qty: {product?.quantity}</div>
                             <div className="">Price: {product?.unit_price}</div>
-                        </div>)
-                    }
-
+                            <div
+                                className="  cursor-pointer"
+                                onClick={() => setActivedForm(product)}
+                            >
+                                {" "}
+                                Return{" "}
+                            </div>
+                        </div>
+                    ))}
                 </div>
+
+                {activeFrom?.id && (
+                    <ReturnForm
+                        activeFrom={activeFrom}
+                        setActivedForm={setActivedForm}
+                        orderInfo={data}
+                    />
+                )}
             </div>
         </>
     );
