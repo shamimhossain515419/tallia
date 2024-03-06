@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useState } from "react";
 import ProductModal from "./ProductModal";
-const ProductCart = ({ product }: any) => {
+import { ProductInterface } from "@/types/productInterface";
+const ProductCart = ({ product }: { product: ProductInterface }) => {
      const { photos, name } = product || {};
-     let photoArray = [];
+     let photoArray: string[] = [];
      if (photos) {
           photoArray.push(...photos.split(","));
      }
-     const [active, setActive] = useState(false);
+     const [active, setActive] = useState<boolean>(false);
      return (
           <div>
                <div onClick={() => setActive(!active)} className="   w-full cursor-pointer">

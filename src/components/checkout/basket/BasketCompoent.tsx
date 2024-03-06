@@ -4,12 +4,13 @@ import Summary from './Summary';
 import Link from 'next/link';
 import CartComponent from './CartComponent';
 import { useSelector } from 'react-redux';
+import { ProductInterface } from '@/types/productInterface';
 
 const BasketCompoent = () => {
-
     const { cartItems, totalAmount, totalQuantity } = useSelector(
         (state: any) => state.Cart
     );
+
     return (
         <div>
             <div className=' container'>
@@ -20,7 +21,7 @@ const BasketCompoent = () => {
                             <div>
                                 {/* mapping cart product  */}
                                 {cartItems?.length > 0 ? <> {
-                                    cartItems?.map((product: any, index: number) => <CartComponent product={product} key={index} ></CartComponent>)
+                                    cartItems?.map((product: ProductInterface, index: number) => <CartComponent product={product} key={index} ></CartComponent>)
                                 }
                                 </> : <div className=' py-4'>
                                     {/* if  the product dose not  exist */}

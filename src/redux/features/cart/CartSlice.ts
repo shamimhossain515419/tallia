@@ -1,4 +1,5 @@
 "use client";
+import { CartInitialStateInterface } from "@/types/CartInitialStateInterface";
 import { ProductInterface } from "@/types/productInterface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
@@ -13,12 +14,6 @@ const setCookie = (key: string, value: any) => {
 };
 
 //
-
-interface InitialState {
-  cartItems: ProductInterface[];
-  totalQuantity: number;
-  totalAmount: number;
-}
 
 const items: ProductInterface[] =
   getCookie("cartItems", []) !== null ? getCookie("cartItems", [])! : [];
@@ -39,7 +34,7 @@ const setItemFunc = (
   setCookie("totalQuantity", totalQuantity);
 };
 
-const initialState: InitialState = {
+const initialState: CartInitialStateInterface = {
   cartItems: items,
   totalQuantity: totalQuantity,
   totalAmount: totalAmount,
@@ -49,7 +44,10 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem(state: InitialState, action: PayloadAction<ProductInterface>) {
+    addItem(
+      state: CartInitialStateInterface,
+      action: PayloadAction<ProductInterface>
+    ) {
       const newItem = action.payload;
       const id = newItem?.id;
       const extraIngredients = newItem.extraIngredients;
@@ -100,7 +98,10 @@ const cartSlice = createSlice({
       );
     },
 
-    removeItem(state: InitialState, action: PayloadAction<string>) {
+    removeItem(
+      state: CartInitialStateInterface,
+      action: PayloadAction<string>
+    ) {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
       state.totalQuantity--;
@@ -125,7 +126,10 @@ const cartSlice = createSlice({
       );
     },
 
-    deleteItem(state: InitialState, action: PayloadAction<string>) {
+    deleteItem(
+      state: CartInitialStateInterface,
+      action: PayloadAction<string>
+    ) {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
 

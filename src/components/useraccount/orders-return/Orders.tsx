@@ -4,10 +4,11 @@ import React from 'react';
 import { PiKeyReturnBold } from "react-icons/pi";
 import OrderCart from './OrderCart';
 import { useGetordersProductQuery } from '@/redux/features/orders/ordersApi';
+import { OrderDetailsInterface } from '@/types/OrderDetailsInterface';
 
 const Orders = () => {
      const { data: OrderData, error } = useGetordersProductQuery("");
-     const orderDetails = OrderData?.data;
+     const orderDetails: OrderDetailsInterface[] = OrderData?.data;
 
      return (
           <div>

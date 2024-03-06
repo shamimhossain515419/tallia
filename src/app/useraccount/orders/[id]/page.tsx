@@ -1,14 +1,15 @@
 "use client";
 import ReturnForm from "@/components/useraccount/orders-return/ReturnForm";
 import { useGetOrderDetailQuery } from "@/redux/features/orders/ordersApi";
+import { OrderProductInterface, SingleOrderInterface } from "@/types/OrderInterface";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const Page = ({ params }) => {
+const Page = ({ params }: any) => {
     const { data } = useGetOrderDetailQuery(params.id);
     const orderdetails = data?.order_info || {};
     const orderProduct = data?.data || [];
-    const [activeFrom, setActivedForm] = useState({});
+    const [activeFrom, setActivedForm] = useState<any>({});
     return (
         <>
             <div className=" w-full mx-auto shadow  my-5 rounded-xl   ">
@@ -42,7 +43,7 @@ const Page = ({ params }) => {
 
                 <div className="">
                     {/*  */}
-                    {orderProduct?.map((product, i) => (
+                    {orderProduct?.map((product: OrderProductInterface, i: number) => (
                         <div
                             key={i}
                             className="text-sm p-2 flex justify-between items-center "

@@ -1,11 +1,11 @@
 "use client"
 
 import { addressToggle } from "@/redux/features/address/addressSlice";
+import { AddressInterface } from "@/types/AddressInterface";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-const ShippingAddress = ({ data: address }: any) => {
-
+const ShippingAddress = ({ data: address }: { data: AddressInterface }) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const { value } = useSelector((state: any) => state.address);
@@ -14,7 +14,7 @@ const ShippingAddress = ({ data: address }: any) => {
     }
     return (
         <div>
-            {address?.map((address: any, index: number) => (
+            {address?.map((address: AddressInterface, index: number) => (
                 <div
                     onClick={() => dispatch(addressToggle(address?.id))}
                     key={index}

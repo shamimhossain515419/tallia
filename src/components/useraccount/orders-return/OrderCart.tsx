@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { OrderDetailsInterface } from "@/types/OrderDetailsInterface";
 const OrderCart = ({ orderDetails }: any) => {
     return (
         <>
@@ -24,7 +25,7 @@ const OrderCart = ({ orderDetails }: any) => {
                         </tr>
                     </thead>
                     <tbody className=" pt-2 ">
-                        {orderDetails?.map((item: any) => (
+                        {orderDetails?.map((item: OrderDetailsInterface) => (
                             <tr
                                 key={item?.order_primary_id}
                                 className="  hover:bg-[#ff6a001b] duration-300"

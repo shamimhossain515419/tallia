@@ -1,6 +1,7 @@
 "use client";
 import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useOrderProductMutation } from "@/redux/features/orders/ordersApi";
+import { CreateOrderinterface } from "@/types/OrderInterface";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -17,13 +18,9 @@ const Page = () => {
   const { cartItems, totalAmount, totalQuantity } = useSelector(
     (state: any) => state.Cart
   );
-  
-
   const dispatch = useDispatch();
   const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] =
     useOrderProductMutation();
-  const group_id = process.env.GROUP_ID;
-
   const OrderHandler = async () => {
     if (!cartItems.length) {
       toast.error("Cart is empty");
@@ -33,8 +30,10 @@ const Page = () => {
       router.push("/checkout/payment");
       return;
     }
-    const value = {
-      group_id: group_id,
+    const value: CreateOrderinterface = {
+      group_id: process.env.GROUP_ID
+        ? parseInt(process.env.GROUP_ID)
+        : undefined,
       customer_id: user?.id,
       total_amount: totalAmount,
       total_quantity: totalQuantity,

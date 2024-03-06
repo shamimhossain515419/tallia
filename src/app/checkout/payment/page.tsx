@@ -9,6 +9,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useOrderProductMutation } from "@/redux/features/orders/ordersApi";
 import toast from "react-hot-toast";
+import { CreateOrderinterface } from "@/types/OrderInterface";
 const options = [
     { value: "option1", label: "Option 1" },
     { value: "option2", label: "Option 2" },
@@ -17,17 +18,18 @@ const options = [
 const Page = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [address, setAddress] = useState(false);
-
     const { cartItems, totalAmount, totalQuantity } = useSelector(
         (state: any) => state.Cart
     );
-    const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] = useOrderProductMutation()
-    const group_id = process.env.GROUP_ID;
+    const [orderProduct, { data: orderResult, isLoading, isSuccess, error }] =
+        useOrderProductMutation();
     const { value: address_id } = useSelector((state: any) => state.address);
-    // order  handler 
+    // order  handler
     const handleOrder = async () => {
-        const value = {
-            group_id: group_id,
+        const value: CreateOrderinterface = {
+            group_id: process.env.GROUP_ID
+                ? parseInt(process.env.GROUP_ID)
+                : undefined,
             customer_id: 1,
             total_amount: totalAmount,
             total_quantity: totalQuantity,
@@ -35,7 +37,7 @@ const Page = () => {
             items: cartItems,
         };
 
-        orderProduct(value)
+        orderProduct(value);
     };
     //    response  order ?\
     useEffect(() => {
@@ -47,11 +49,21 @@ const Page = () => {
     return (
         <div className="sm:mr-5">
             <div className="flex items-center justify-center text-stone-500 ">
-                <Link className="hover:text-secondary" href={"/cart"}>Cart</Link> <IoIosArrowForward />
-                <Link className="hover:text-secondary" href={"/checkout/information"}>Information</Link>{" "}
+                <Link className="hover:text-secondary" href={"/cart"}>
+                    Cart
+                </Link>{" "}
                 <IoIosArrowForward />
-                <Link className="hover:text-secondary" href={"/checkout/shipping"}>Shipping</Link> <IoIosArrowForward />
-                <Link className="hover:text-secondary" href={"/checkout/payment"}>Payment</Link>
+                <Link className="hover:text-secondary" href={"/checkout/information"}>
+                    Information
+                </Link>{" "}
+                <IoIosArrowForward />
+                <Link className="hover:text-secondary" href={"/checkout/shipping"}>
+                    Shipping
+                </Link>{" "}
+                <IoIosArrowForward />
+                <Link className="hover:text-secondary" href={"/checkout/payment"}>
+                    Payment
+                </Link>
             </div>
             <div>
                 {/* save address  */}
@@ -341,7 +353,10 @@ const Page = () => {
                             </Link>
                         </div>
                         <div className="flex justify-end mt-4">
-                            <button onClick={handleOrder} className="bg-black hover:bg-secondary duration-300 px-6  py-[10px] lg:py-[14PX] text-white text-[15px]   font-bold rounded-[5px] uppercase ">
+                            <button
+                                onClick={handleOrder}
+                                className="bg-black hover:bg-secondary duration-300 px-6  py-[10px] lg:py-[14PX] text-white text-[15px]   font-bold rounded-[5px] uppercase "
+                            >
                                 {isLoading ? "Loading..." : "Complete Order "}
                             </button>
                         </div>

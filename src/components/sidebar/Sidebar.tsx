@@ -10,11 +10,11 @@ import shopImage from "../../../public/images/icons/Vector.svg";
 import { toggleSideCart } from "@/redux/features/sidebarToggle/sidebarToggleSlice";
 import Side_card from "./Side_card";
 import Link from "next/link";
+import { ProductInterface } from "@/types/productInterface";
 
 const Sitebar = () => {
     const { value } = useSelector((state: any) => state.sidebarToggle);
     const dispatch = useDispatch();
-    const products = [1, 2, 3];
     const { totalAmount, cartItems } = useSelector((state: any) => state.Cart);
 
     return (
@@ -56,7 +56,7 @@ const Sitebar = () => {
                             <div className=" p-[6px]   ">
                                 {cartItems?.length > 0 ? (
                                     <div className=" max-h-[770px] moduleScrollBar overflow-y-scroll ">
-                                        {cartItems?.map((product: any, i: number) => (
+                                        {cartItems?.map((product: ProductInterface, i: number) => (
                                             <Side_card product={product} key={i}></Side_card>
                                         ))}
                                     </div>

@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "@/redux/features/cart/CartSlice";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { ProductInterface } from "@/types/productInterface";
 const ProductModal = ({ id, setActive }: any) => {
      const { data: singleProduct } = useGetSingleProductQuery(id);
      const [open, setOpen] = useState(false);
@@ -27,9 +28,11 @@ const ProductModal = ({ id, setActive }: any) => {
      const [activeColor, setActiveColor] = useState("");
      const [activeSize, setActiveSize] = useState("");
      const { cartItems } = useSelector((state: any) => state.Cart);
-     const existingItem = cartItems?.find((item: any) => item?.id == product?.id);
+     const existingItem = cartItems?.find(
+          (item: ProductInterface) => item?.id == product?.id
+     );
      const router = useRouter();
-     const handleCart = (product: any) => {
+     const handleCart = (product: ProductInterface) => {
           if (existingItem) {
                router.push("/cart");
           } else {
@@ -44,7 +47,7 @@ const ProductModal = ({ id, setActive }: any) => {
                const values: any = {
                     id: product.id,
                     name: product.name,
-                    sale_price: parseFloat(product.sale_price),
+                    sale_price: product.sale_price,
                     discount: product.discount,
                     discount_type: product.discount_type,
                     color: activeColor,
@@ -181,7 +184,6 @@ const ProductModal = ({ id, setActive }: any) => {
                               <IoClose size={24} />
                          </div>
                     </div>
-
                </div>
                {open && <Composition id={id} setOpen={setOpen} />}
           </>
