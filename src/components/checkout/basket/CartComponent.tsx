@@ -12,8 +12,6 @@ import {
 import { ProductInterface } from "@/types/productInterface";
 const CartComponent = ({ product }: { product: ProductInterface }) => {
     const dispatch = useDispatch();
-    const handleWishlist = () => { };
-
     return (
         <div>
             <div className=" lg:pt-10">
@@ -87,10 +85,14 @@ const CartComponent = ({ product }: { product: ProductInterface }) => {
                         </div>
                         {/* close button  */}
                         <div
-                            onClick={() => dispatch(deleteItem(product.id))}
+                            onClick={() => dispatch(
+                                deleteItem({
+                                    id: product?.id,
+                                    extraIngredients: product?.extraIngredients,
+                                })
+                            )}
                             className=" absolute top-3 cursor-pointer  duration-150 right-3 hover:bg-[#F5F5F5] p-[2px] rounded-sm"
-                        >
-                            <IoMdClose size={24} />
+                        >  <IoMdClose size={24} />
                         </div>
                     </div>
                 </div>

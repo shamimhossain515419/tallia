@@ -48,7 +48,12 @@ const Side_card = ({ product }: any) => {
                 </div>
                 <div className=" flex justify-start items-center gap-3">
                     <h1 className=" text-[#000000] text-[14px] font-normal">${singleProduct_totalPrice}</h1>
-                    <div onClick={() => dispatch(deleteItem(product?.id))} className=" w-full cursor-pointer">
+                    <div onClick={() => dispatch(
+                        deleteItem({
+                            id: product?.id,
+                            extraIngredients: product?.extraIngredients,
+                        })
+                    )} className=" w-full cursor-pointer">
                         <IoMdCloseCircle className=" text-secondary " size={24} />
                     </div>
                 </div>

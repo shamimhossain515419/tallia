@@ -1,7 +1,7 @@
 "use client";
 import ReturnForm from "@/components/useraccount/orders-return/ReturnForm";
 import { useGetOrderDetailQuery } from "@/redux/features/orders/ordersApi";
-import { OrderProductInterface, SingleOrderInterface } from "@/types/OrderInterface";
+import { OrderProductInterface } from "@/types/OrderInterface";
 import Image from "next/image";
 import React, { useState } from "react";
 

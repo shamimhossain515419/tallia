@@ -1,5 +1,5 @@
 "use client";
-import { CartInitialStateInterface } from "@/types/CartInitialStateInterface";
+
 import { ProductInterface } from "@/types/productInterface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
@@ -14,6 +14,12 @@ const setCookie = (key: string, value: any) => {
 };
 
 //
+
+interface InitialState {
+  cartItems: ProductInterface[];
+  totalQuantity: number;
+  totalAmount: number;
+}
 
 const items: ProductInterface[] =
   getCookie("cartItems", []) !== null ? getCookie("cartItems", [])! : [];
@@ -34,7 +40,7 @@ const setItemFunc = (
   setCookie("totalQuantity", totalQuantity);
 };
 
-const initialState: CartInitialStateInterface = {
+const initialState: InitialState = {
   cartItems: items,
   totalQuantity: totalQuantity,
   totalAmount: totalAmount,
@@ -44,45 +50,60 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem(
-      state: CartInitialStateInterface,
-      action: PayloadAction<ProductInterface>
-    ) {
+    addItem(state, action: PayloadAction<ProductInterface>) {
       const newItem = action.payload;
-      const id = newItem?.id;
+      const id = newItem.id;
       const extraIngredients = newItem.extraIngredients;
-      const existingItem = state.cartItems.find((item) => item?.id === id);
-      console.log(state);
 
-      if (!existingItem) {
+      const existingItemIndex = state.cartItems.findIndex(
+        (item) =>
+          item.id === id &&
+          JSON.stringify(item.extraIngredients) ===
+            JSON.stringify(extraIngredients)
+      );
+
+      if (existingItemIndex === -1) {
         state.cartItems.push({
           ...newItem,
           quantity: 1,
           totalPrice: newItem.sale_price,
+          extraIngredients: extraIngredients,
         });
         state.totalQuantity++;
-      } else if (
-        existingItem &&
-        JSON.stringify(existingItem.extraIngredients) ===
-          JSON.stringify(extraIngredients)
-      ) {
-        state.totalQuantity++;
-        existingItem.quantity++;
       } else {
-        const index = state.cartItems.findIndex(
-          (s) => s.id === existingItem.id
-        );
-        const newValue = {
-          ...existingItem,
-          quantity: 1,
-          totalPrice: existingItem.sale_price,
-          extraIngredients: extraIngredients,
-        };
-        state.cartItems.splice(index, 1, newValue);
-        state.totalQuantity = state.cartItems.reduce(
-          (total, item) => total + Number(item.quantity),
-          0
-        );
+        const existingItem = state.cartItems[existingItemIndex];
+        existingItem.quantity++;
+        existingItem.totalPrice += newItem.sale_price;
+        state.totalQuantity++;
+      }
+
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.totalPrice),
+        0
+      );
+      setItemFunc(
+        state.cartItems.map((item) => item),
+        state.totalAmount,
+        state.totalQuantity
+      );
+    },
+
+    removeItem(state, action: PayloadAction<string>) {
+      const id = action.payload;
+      const existingItemIndex = state.cartItems.findIndex(
+        (item) => item.id === id
+      );
+
+      if (existingItemIndex !== -1) {
+        const existingItem = state.cartItems[existingItemIndex];
+        state.totalQuantity--;
+
+        if (existingItem.quantity === 1) {
+          state.cartItems.splice(existingItemIndex, 1);
+        } else {
+          existingItem.quantity--;
+          existingItem.totalPrice -= existingItem.sale_price;
+        }
       }
 
       state.totalAmount = state.cartItems.reduce(
@@ -98,44 +119,21 @@ const cartSlice = createSlice({
       );
     },
 
-    removeItem(
-      state: CartInitialStateInterface,
-      action: PayloadAction<string>
-    ) {
-      const id = action.payload;
-      const existingItem = state.cartItems.find((item) => item.id === id);
-      state.totalQuantity--;
+    deleteItem(state, action) {
+      const { id, extraIngredients } = action.payload;
 
-      if (existingItem && existingItem.quantity === 1) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== id);
-      } else if (existingItem) {
-        existingItem.quantity--;
-        existingItem.totalPrice -= existingItem.sale_price;
-      }
-
-      state.totalAmount = state.cartItems.reduce(
-        (total, item) =>
-          total + Number(item.sale_price) * Number(item.quantity),
-        0
+      // Find the index of the item to delete
+      const itemIndexToDelete = state.cartItems.findIndex(
+        (item) =>
+          item.id === id &&
+          JSON.stringify(item.extraIngredients) ===
+            JSON.stringify(extraIngredients)
       );
 
-      setItemFunc(
-        state.cartItems.map((item) => item),
-        state.totalAmount,
-        state.totalQuantity
-      );
-    },
-
-    deleteItem(
-      state: CartInitialStateInterface,
-      action: PayloadAction<string>
-    ) {
-      const id = action.payload;
-      const existingItem = state.cartItems.find((item) => item.id === id);
-
-      if (existingItem) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== id);
-        state.totalQuantity -= existingItem.quantity;
+      if (itemIndexToDelete !== -1) {
+        const deletedItem = state.cartItems[itemIndexToDelete];
+        state.totalQuantity -= deletedItem.quantity;
+        state.cartItems.splice(itemIndexToDelete, 1);
       }
 
       state.totalAmount = state.cartItems.reduce(
@@ -162,6 +160,5 @@ const cartSlice = createSlice({
     },
   },
 });
-
-export const { addItem, deleteItem, clearCart, removeItem } = cartSlice.actions;
+export const { addItem, clearCart, deleteItem, removeItem } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,10 +1,6 @@
 "use client";
-
 import Image from "next/image";
-import image11 from "../../../src/assets/product/1.1.jpg";
-import image22 from "../../../src/assets/product/1.2.jpg";
 import { IoClose } from "react-icons/io5";
-import CustomLinkButton from "../customButton/CustomLinkButton";
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,30 +29,30 @@ const ProductModal = ({ id, setActive }: any) => {
      );
      const router = useRouter();
      const handleCart = (product: ProductInterface) => {
-          if (existingItem) {
-               router.push("/cart");
-          } else {
-               if (!activeColor && colors.length) {
-                    toast.error("Select Color");
-                    return;
-               }
-               if (!activeSize && sizes.length) {
-                    toast.error("Select Size");
-                    return;
-               }
-               const values: any = {
-                    id: product.id,
-                    name: product.name,
-                    sale_price: product.sale_price,
-                    discount: product.discount,
-                    discount_type: product.discount_type,
-                    color: activeColor,
-                    size: activeSize,
-                    photos: photos,
-               };
-               dispatch(addItem(values));
-               setActive(false);
+          if (!activeColor && colors.length) {
+               toast.error("Select Color");
+               return;
           }
+          if (!activeSize && sizes.length) {
+               toast.error("Select Size");
+               return;
+          }
+          const values: any = {
+               id: product.id,
+               name: product.name,
+               sale_price: product.sale_price,
+               discount: product.discount,
+               discount_type: product.discount_type,
+               color: activeColor,
+               size: activeSize,
+               extraIngredients: {
+                    size: activeSize,
+                    color: activeColor,
+               },
+               photos: photos,
+          };
+          dispatch(addItem(values));
+          setActive(false);
      };
 
      return (
@@ -140,7 +136,8 @@ const ProductModal = ({ id, setActive }: any) => {
                                              className={`text-[15px] w-full bg-black  px-6 py-2     my-3 flex items-center justify-center rounded-[40px] cursor-pointer relative overflow-hidden transition-all  border border-white  hover:border-[#F15A24]  duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-[#F15A24]
                                         before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-[40px]  hover:before:left-0 uppercase  text-white`}
                                         >
-                                             {existingItem?.id ? "Got to Checkout " : "add to cart"}
+                                             {" "}
+                                             add to cart
                                         </button>
                                    </div>
 
