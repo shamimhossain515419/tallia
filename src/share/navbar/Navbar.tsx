@@ -7,10 +7,9 @@ import Menu from "./menu";
 import { Collapse } from "react-collapse";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSession } from "next-auth/react";
-const Navbar = ({ products }: any) => {
+const Navbar = ({ groupDetails }: any) => {
      const [active, setActive] = useState(false);
      const { data: session } = useSession();
-     console.log(session);
 
      return (
           <div className=" relative">
@@ -18,7 +17,7 @@ const Navbar = ({ products }: any) => {
                     <div className="  px-6   py-5 flex justify-between items-center gap-2  ">
                          <Link href={"/"}>
                               <h1 className=" text-2xl lg:text-5xl  hover:text-[#000000] duration-100 cursor-pointer text-secondary uppercase   tracking-wide font-normal">
-                                   {products?.data?.name}
+                                   {groupDetails?.group_name}
                               </h1>
                          </Link>
                          <div className="  hidden lg:flex items-center  md:gap-6 xl:gap-12">

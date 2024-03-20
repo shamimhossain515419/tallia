@@ -16,6 +16,9 @@ const Sitebar = () => {
     const { value } = useSelector((state: any) => state.sidebarToggle);
     const dispatch = useDispatch();
     const { totalAmount, cartItems } = useSelector((state: any) => state.Cart);
+    console.log(cartItems);
+    console.log(totalAmount);
+
 
     return (
         <div>

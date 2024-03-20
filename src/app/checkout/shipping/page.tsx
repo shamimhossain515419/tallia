@@ -47,8 +47,9 @@ const Page = () => {
     if (isSuccess && orderResult) {
       toast.success(orderResult?.message);
       dispatch(clearCart());
+      router.push("/useraccount/orders");
     }
-  }, [orderResult, isSuccess, dispatch]);
+  }, [orderResult, router, isSuccess, dispatch]);
 
   return (
     <div>

@@ -10,6 +10,7 @@ const Page = ({ params }: any) => {
     const orderdetails = data?.order_info || {};
     const orderProduct = data?.data || [];
     const [activeFrom, setActivedForm] = useState<any>({});
+
     return (
         <>
             <div className=" w-full mx-auto shadow  my-5 rounded-xl   ">

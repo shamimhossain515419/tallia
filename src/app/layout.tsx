@@ -22,16 +22,16 @@ async function getData() {
   let res = await fetch(url, {
     next: { revalidate: 300 },
   });
-  const products = await res.json();
-  return { products };
+  const groupDetails = await res.json();
+  return groupDetails;
 }
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { products } = await getData();
-  metadata.title = products?.data?.name;
+  const groupDetails = await getData();
+  metadata.title = groupDetails?.group_name;
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -41,11 +41,11 @@ export default async function RootLayout({
             <TokenProvider>
               <div>
                 <div>
-                  <Navbar products={products} />
+                  <Navbar groupDetails={groupDetails} />
                 </div>
                 <div className=" min-h-[70vh] pt-[90px]">{children}</div>
                 <div>
-                  <Footer products={products} />
+                  <Footer groupDetails={groupDetails} />
                 </div>
               </div>
               <Sitebar />
