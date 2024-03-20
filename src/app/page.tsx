@@ -7,12 +7,22 @@ import Title_Marquee from "@/components/title-marquee/Title_Marquee";
 import ShadowTitle_Marquee from "@/components/title-marquee/ShadowTitle_Marquee";
 import Hero from "@/components/home/hero/Hero";
 import Instagram from "@/components/home/instagram/Instagram";
-export default function Home() {
+async function getData() {
+  const url = `${process.env.BASE_URL}/api/group-information/${process.env.GROUP_ID}`;
+  let res = await fetch(url, {
+    next: { revalidate: 300 },
+  });
+  const groupDetails = await res.json();
+  return groupDetails;
+}
+
+export default async function Home() {
+  const groupDetails = await getData();
   return (
     <main className=" w-full overflow-hidden">
       <Hero></Hero>
       <div className=' relative  max-h-[90vh] overflow-hidden'>
-        <Image className=' relative w-full  h-full' src={hero2} alt='hero'></Image>
+        <Image width={1000} height={600} className=' relative w-full  h-full' src={process.env.BASE_URL + "/images/" + groupDetails?.banner} alt='hero'></Image>
         <div className=' absolute  w-full h-full  top-[45%] lg:top-2/3 '>
           <div className="   flex justify-center items-center ">
             <div className=" inline-block">

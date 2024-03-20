@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
-  const url = `${process.env.BASE_URL}/api/group-information/4`;
+  const url = `${process.env.BASE_URL}/api/group-information/${process.env.GROUP_ID}`;
   let res = await fetch(url, {
     next: { revalidate: 300 },
   });
@@ -32,6 +32,7 @@ export default async function RootLayout({
 }>) {
   const groupDetails = await getData();
   metadata.title = groupDetails?.group_name;
+
   return (
     <html lang="en">
       <body className={inter.className}>
