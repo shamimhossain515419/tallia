@@ -19,9 +19,6 @@ const Page = () => {
         const from = e.target;
         const email = from?.email.value;
         const password = from?.password.value;
-        const data = { email, password };
-
-
         try {
             const response = await fetch("https://getmicrojobs.com/api/login", {
                 method: "POST",
@@ -47,7 +44,9 @@ const Page = () => {
                     }
                 }
             } else {
-                setError(result?.massage);
+                setLoading(false)
+                setError(result?.message);
+
             }
         } catch (error) { }
     };
