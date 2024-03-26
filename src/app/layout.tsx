@@ -9,6 +9,7 @@ import Sitebar from "@/components/sidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
 import TokenProvider from "@/components/AuthProvider/TokenProvider";
 import NextTopLoader from "nextjs-toploader";
+import SearchBar from "@/share/searchBar/Searchbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,6 +50,7 @@ export default async function RootLayout({
                   <Footer groupDetails={groupDetails} />
                 </div>
               </div>
+              <SearchBar groupInfo={groupDetails} />
               <Sitebar />
               <Toaster position="top-center" reverseOrder={false} />
             </TokenProvider>

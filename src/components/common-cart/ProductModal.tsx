@@ -52,7 +52,7 @@ const ProductModal = ({ id, setActive }: any) => {
                photos: photos,
           };
           dispatch(addItem(values));
-          setActive(false);
+          setActive("");
      };
 
      return (
@@ -175,7 +175,7 @@ const ProductModal = ({ id, setActive }: any) => {
                          </div>
 
                          <div
-                              onClick={() => setActive(false)}
+                              onClick={() => setActive("")}
                               className=" hover:text-red-500  z-50 cursor-pointer absolute top-1 right-0 p-3"
                          >
                               <IoClose size={24} />

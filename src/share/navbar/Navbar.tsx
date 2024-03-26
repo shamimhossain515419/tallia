@@ -7,9 +7,14 @@ import Menu from "./menu";
 import { Collapse } from "react-collapse";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSession } from "next-auth/react";
+import { FiSearch } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { toggle_search } from "@/redux/features/searchToggle/SearchToggle";
+
 const Navbar = ({ groupDetails }: any) => {
      const [active, setActive] = useState(false);
      const { data: session } = useSession();
+     const dispatch = useDispatch()
 
      return (
           <div className=" relative">
@@ -94,6 +99,7 @@ const Navbar = ({ groupDetails }: any) => {
                                         <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
                                    </Link>
                               </div>
+
                               <div>
                                    <Link
                                         href={"https://www.instagram.com/talliaclothing/"}
@@ -123,6 +129,9 @@ const Navbar = ({ groupDetails }: any) => {
                                              <span className="ease absolute left-0  -bottom-1  h-0 w-0 border-b border-[#ff6900] transition-all duration-200 group-hover:w-full"></span>
                                         </Link>
                                    )}
+                              </div>
+                              <div onClick={() => dispatch(toggle_search())} className="cursor-pointer">
+                                   <FiSearch className="text-[20px]" />
                               </div>
                          </div>
                          <div onClick={() => setActive(!active)} className="  lg:hidden">
