@@ -94,10 +94,10 @@ const SearchBar = ({ groupInfo }: any) => {
                                              {productdata.length ? (
                                                   <div className=" flex flex-wrap gap-5">
                                                        {productdata?.map((item: any, index: number) => (
-                                                            <div onClick={() => setActive(item.id)} className="py-[3px] w-[120px]  md:w-[150px] overflow-hidden cursor-pointer" key={index}>
+                                                            <div onClick={() => setActive(item.id)} className="py-[3px] w-[120px] md:w-[150px] overflow-hidden cursor-pointer" key={index}>
                                                                  <div>
                                                                       <Image
-                                                                           className="h-[120px]  w-full object-cover"
+                                                                           className="h-[120px] w-full    object-fill"
                                                                            width={120}
                                                                            height={120}
                                                                            src={process.env.BASE_URL + "/images/" + item?.photo}
