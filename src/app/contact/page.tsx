@@ -21,7 +21,8 @@ const Page = () => {
      }
      useEffect(() => {
           if (result) {
-               toast.success("Message sent successfully")
+               toast.success("Message sent successfully");
+               window.location.reload();
           }
 
      }, [result])
